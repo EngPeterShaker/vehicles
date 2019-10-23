@@ -1,1 +1,2 @@
 export const FETCH_VEHICLES = 'FETCH_VEHICLES';
+export const CHANGE_LOCALE = 'CHANGE_LOCALE';
