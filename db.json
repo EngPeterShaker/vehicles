@@ -1,0 +1,64 @@
+{
+  "vehicles": [
+    {
+      "name": "Toyota",
+      "vin": "e3dd45f5g5gt453",
+      "id": 1,
+      "status": "online",
+      "color":"red",
+      "make":2015,
+      "model": "Prius",
+      "img_url":"https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
+    },
+    {
+      "name": "Tesla",
+      "vin": "e3dd45f5g5gt453",
+      "id": 2,
+      "status": "online",
+      "color":"white",
+      "make":2016,
+      "model": "Tesla s4",
+      "img_url":"https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
+    },
+    {
+      "name": "Volvo",
+      "vin": "e3dd45f5g5gt453",
+      "id": 3,
+      "status": "online",
+      "color":"green",
+      "make":2016,
+      "model": "e3",
+      "img_url":"https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
+    },
+    {
+      "name": "Citroen",
+      "vin": "e3dd45f5g5gt453",
+      "id": 5,
+      "status": "online",
+      "color":"grey",
+      "make":2014,
+      "model": "C5",
+      "img_url":"https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
+    },
+    {
+      "name": "Porshe",
+      "vin": "e3dd45f5g5gt453",
+      "id": 6,
+      "status": "online",
+      "color":"blue",
+      "make":2015,
+      "model": "P60",
+      "img_url":"https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2019/01/panamera-1024-e1547409913837.jpg"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
