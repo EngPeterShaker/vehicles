@@ -1,5 +1,6 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import { withLocalize } from "react-localize-redux";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -73,7 +74,26 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function NavBar() {
+const NavBar=(props)=> {
+  useEffect(() => {
+    props.initialize({
+      languages: [
+        { name: "English", code: "en" },
+        { name: "French", code: "fr" }
+      ],
+      // translation: globalTranslations,
+      options: {
+        renderToStaticMarkup : false,
+        renderInnerHtml: true,
+        defaultLanguage: "en"
+      }
+    });
+  }, [])
+
+const {localize} = props;
+console.log('props', props)
+// const { languages, activeLanguage, setActiveLanguage } = localize ;
+// console.log('languages', languages)
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -213,3 +233,5 @@ export default function NavBar() {
     </div>
   );
 }
+
+export default withLocalize(NavBar)
