@@ -1,4 +1,6 @@
 import React from 'react';
+import { withLocalize , Translate } from "react-localize-redux";
+
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
+const MediaCard = (props)=> {
   const classes = useStyles();
   const {data : vehicle}= props;
   console.log('data', vehicle)
@@ -38,7 +40,8 @@ export default function MediaCard(props) {
             {vehicle.name}
           </Typography>
           <Typography>
-          'Status : ' { vehicle.status}
+          <Translate id="status" />
+         { vehicle.status}
           </Typography>
           {/* <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
@@ -57,3 +60,5 @@ export default function MediaCard(props) {
     </Card>
   );
 }
+
+export default withLocalize(MediaCard)
