@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { LocalizeProvider  , withLocalize} from "react-localize-redux";
-// import { withLocalize } from "react-localize-redux";
-
+// import translations from "./translations";
 import logo from "./logo.svg";
 import "./App.css";
 import { simpleAction } from "./actions/simpleAction";
@@ -15,34 +14,24 @@ function App(props) {
     props.simpleAction();
   };
 
-  props.initialize({
-    languages: [
-      { name: "English", code: "en" },
-      { name: "French", code: "fr" }
-    ],
-    // translation: globalTranslations,
-    options: { 'renderToStaticMarkup' : true }
-  });
+  // props.initialize({
+  //   languages: [
+  //     { name: "English", code: "en" },
+  //     { name: "French", code: "fr" }
+  //   ],
+  //   // translation: globalTranslations,
+  //   translation: translations,
+  //       options: {
+  //         renderToStaticMarkup : false,
+  //         renderInnerHtml: true,
+  //         defaultLanguage: "en"
+  //       }
+  // });
 // }
-console.log('props', props)
 
   return (
     <div className="App">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-      {/* <header className="App-header">
-        <p>
-        Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-        className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        Learn React
-        </a>
 
-      </header> */}
       <LocalizeProvider>
       <NavBar />
       <VehiclesList />
@@ -58,9 +47,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   simpleAction: () => dispatch(simpleAction())
 });
-export default withLocalize(App);
+// export default withLocalize(App);
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withLocalize(App));
