@@ -24,7 +24,6 @@ const useStyles = makeStyles({
 const MediaCard = (props)=> {
   const classes = useStyles();
   const {data : vehicle}= props;
-  console.log('data', vehicle)
 
   return (
     <Card className={classes.card}>

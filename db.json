@@ -1,9 +1,9 @@
 {
   "vehicles": [
     {
-      "name": "Toyota",
       "vin": "e3dd45f5g5gt453",
       "id": 1,
+      "name": "Toyota",
       "status": "online",
       "color":"red",
       "make":2015,
@@ -11,9 +11,9 @@
       "img_url":"https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
     },
     {
-      "name": "Tesla",
       "vin": "e3dd45f5g5gt453",
       "id": 2,
+      "name": "Tesla",
       "status": "online",
       "color":"white",
       "make":2016,
@@ -21,9 +21,9 @@
       "img_url":"https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
     },
     {
-      "name": "Volvo",
       "vin": "e3dd45f5g5gt453",
       "id": 3,
+      "name": "Volvo",
       "status": "online",
       "color":"green",
       "make":2016,
@@ -31,9 +31,9 @@
       "img_url":"https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
     },
     {
-      "name": "Citroen",
       "vin": "e3dd45f5g5gt453",
       "id": 5,
+      "name": "Citroen",
       "status": "online",
       "color":"grey",
       "make":2014,
@@ -41,9 +41,9 @@
       "img_url":"https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
     },
     {
-      "name": "Porshe",
       "vin": "e3dd45f5g5gt453",
       "id": 6,
+      "name": "Porshe",
       "status": "online",
       "color":"blue",
       "make":2015,
@@ -57,6 +57,93 @@
       "body": "some comment",
       "postId": 1
     }
+  ],
+  "customers":[
+    {"name": "Kalles Grustransporter AB",
+    "Address": "Cementvägen 8, 111 11 Södertälje",
+    "vehicles":[
+      {
+        "vin": "YS2R4X20005399401",
+        "reg_nr" :"ABC123",
+        "name": "Toyota",
+      "status": "online",
+      "color":"red",
+      "make":2015,
+      "model": "Prius",
+      "img_url":"https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
+      },
+      {
+        "vin": "VLUR4X20009093588",
+        "reg_nr" :"DEF456",
+        "name": "Tesla",
+        "status": "online",
+        "color":"white",
+        "make":2016,
+        "model": "Tesla s4",
+        "img_url":"https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
+      },
+      {
+        "vin": "VLUR4X20009048066",
+        "reg_nr" :"GHI789",
+        "name": "Volvo",
+      "status": "online",
+      "color":"green",
+      "make":2016,
+      "model": "e3",
+      "img_url":"https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
+      }
+    ]
+    },
+    {"name": "Johans Bulk AB",
+      "Address": "Balkvägen 12, 222 22 Stockholm",
+      "vehicles":[
+        {
+          "vin": "YS2R4X20005388011",
+          "reg_nr" :"JKL012",
+          "name": "Citroen",
+          "status": "online",
+          "color":"grey",
+          "make":2014,
+          "model": "C5",
+          "img_url":"https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
+        },
+        {
+          "vin": "YS2R4X20005387949",
+          "reg_nr" :"MNO345",
+          "name": "Porshe",
+          "status": "online",
+          "color":"blue",
+          "make":2015,
+          "model": "P60",
+          "img_url":"https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2019/01/panamera-1024-e1547409913837.jpg"
+        }
+      ]
+      },
+      {"name": "Haralds Värdetransporter AB",
+        "Address": "Budgetvägen 1, 333 33 Uppsala",
+        "vehicles":[
+          {
+            "vin": "VLUR4X20009048456",
+            "reg_nr" :"PQR678",
+            "name": "Porshe",
+          "status": "online",
+          "color":"blue",
+          "make":2015,
+          "model": "P60",
+          "img_url":"https://car-images.bauersecure.com/pagefiles/84674/2019bmwi8-roadster-01.jpg"
+          },
+          {
+            "vin": "YS2R4X20005387055",
+            "reg_nr" :"STU901",
+            "name": "Porshe",
+          "status": "online",
+          "color":"blue",
+          "make":2015,
+          "model": "P60",
+          "img_url":"https://media.wired.com/photos/5d09594a62bcb0c9752779d9/master/pass/Transpo_G70_TA-518126.jpg"
+          }
+        ]
+        }
   ],
   "profile": {
     "name": "typicode"

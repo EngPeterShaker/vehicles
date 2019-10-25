@@ -12,6 +12,15 @@ const fetch_vehicles = (data, secretSauce)=> {
     }
   };
 }
+const fetch_customers = (data, secretSauce)=> {
+  return {
+    type: 'FETCH_CUSTOMERS',
+    payload: {
+      customers : data,
+      // vehiclesList : data.map(item)
+    }
+  };
+}
 
  export const fetching = (route) => {
   return function(dispatch) {

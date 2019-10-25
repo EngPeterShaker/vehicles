@@ -11,6 +11,10 @@ export default (state = initialState, {type , payload}) => {
       ...state , ...payload
     //  result: action.payload
     }
+    case actionTypes.FETCH_CUSTOMERS:
+    return {
+      ...state , ...payload
+    }
    default:
     return state
   }

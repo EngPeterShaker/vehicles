@@ -31,28 +31,38 @@ const VehiclesList = props => {
     addTranslationForLanguage,
     setActiveLanguage
   } = props;
-  const { vehicles = [] } = vehiclesReducer;
+  const { vehicles = [], customers = null } = vehiclesReducer;
+  let vehiclesList = [];
+  console.log("customers", customers);
 
   useEffect(() => {
-    getVehicles();
+    getCustomers();
     addTranslationForLanguage(en, "en");
     addTranslationForLanguage(fr, "fr");
   }, []);
   // }
 
-  const getVehicles = () => {
-    props.fetchVehicles();
+  const getCustomers = () => {
+    // props.fetchVehicles();
+    props.fetchCustomers();
   };
 
+  if (customers && customers.length > 0) {
+    vehiclesList = customers.reduce(
+      (acc, item) => [...acc, ...item.vehicles],
+      []
+    );
+  }
+  console.log("vehiclesList", vehiclesList);
   return (
     <Grid container className={classes.root} spacing={2}>
       {/* <Translate id="greeting" /> */}
       {/* <button onClick={() => setActiveLanguage("fr")}>change lang</button> */}
 
-      {vehicles &&
-        vehicles.map(item => {
+      {vehiclesList &&
+        vehiclesList.map(item => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item.vin}>
               <MediaCard data={item} />
             </Grid>
           );
@@ -65,7 +75,8 @@ const mapStateToProps = state => ({
   ...state
 });
 const mapDispatchToProps = dispatch => ({
-  fetchVehicles: () => dispatch(fetching("vehicles"))
+  // fetchVehicles: () => dispatch(fetching("vehicles")),
+  fetchCustomers: () => dispatch(fetching("customers"))
 });
 
 export default connect(
