@@ -1,0 +1,28 @@
+{
+  "plugins": ["react-hooks"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "16.0"
+    }
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": 1,
+    "prefer-const": "error",
+    "react/no-unused-prop-types": 2,
+    "react/prefer-stateless-function": 2,
+    "react/prop-types": 2,
+    "react-hooks/rules-of-hooks": "error"
+    // "react-hooks/exhaustive-deps": "warn"
+  }
+}
