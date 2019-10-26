@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withLocalize, Translate } from "react-localize-redux";
 import en from "../translations/en.translations.json";
 import fr from "../translations/fr.translations.json";
-import { fetching } from "../actions/fetchVehicles";
+import { fetching , changeStatus } from "../actions/fetchVehicles";
 import MediaCard from "./MediaCard";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -91,7 +91,6 @@ const VehiclesList = props => {
     vehiclesList: list
   } = vehiclesReducer;
   // let vehiclesList = [];
-  console.log("customers", props);
 
   const getCustomers = () => {
     // props.fetchVehicles();
@@ -103,7 +102,7 @@ const VehiclesList = props => {
     addTranslationForLanguage(en, "en");
     addTranslationForLanguage(fr, "fr");
   }, []);
-  /////////////// empty dependency array to be called once //////////////////////
+  /////////////// empty dependency array to be invoked once //////////////////////
   useEffect(() => {
     if (list && list.length > 0) {
       setVehiclesList(list);
@@ -113,6 +112,36 @@ const VehiclesList = props => {
   const toggleFilterMenu = () => {
     setOpen(!open);
   };
+
+  const getRndInteger = (max , min =0)=> Math.floor(Math.random() * (max - min + 1) ) + min;
+
+  setInterval(() => {
+    // call Action to change db
+    const customersLength = customers? customers.length :0;
+    const vehiclesLength = list? list.length :0;
+    // getRandomCustomer()
+    if(customers && list){
+
+      // const rndCust = getRndInteger(customers.length)
+      // const CustomerVehiclesLength =  customers[rndCust]? customers[rndCust]['vehicles'].length:null;
+      // const rndvehicle = CustomerVehiclesLength ? getRndInteger(CustomerVehiclesLength) : null;
+      // if (!rndvehicle){
+        // const randomVehicle = customers[rndCust]['vehicles'][rndvehicle];
+        // const changedCustomer = customers[rndCust]['vehicles'][rndvehicle]
+        // props.changeStatus(rndCust , rndvehicle ,changedVehicle )
+        // return ;
+      // }else {
+        // const randomVehicle = list[randomIndex]
+        // const changedVehicle  = {...randomVehicle , onlineStatus: !randomVehicle.onlineStatus}
+        const randomIndex = getRndInteger(list.length-1)
+        const newList = list ;
+        newList[randomIndex] = {...list[randomIndex], onlineStatus: !list[randomIndex]['onlineStatus']};
+        setVehiclesList([])
+        setVehiclesList(newList)
+      // }
+    }
+  }, 20*1000);
+
 
   const applyFilterMenu = async() => {
     const listFilteredByOwner = personName.length >0  ? list.filter(i => personName.indexOf(i.owner) > -1) :   list
@@ -146,7 +175,7 @@ const VehiclesList = props => {
           open={open}
           TransitionComponent={Transition}
           keepMounted
-          onClose={toggleFilterMenu}
+          onClose={() => toggleFilterMenu()}
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
@@ -247,8 +276,8 @@ const mapStateToProps = state => ({
   ...state
 });
 const mapDispatchToProps = dispatch => ({
-  // fetchVehicles: () => dispatch(fetching("vehicles")),
-  fetchCustomers: () => dispatch(fetching("customers"))
+  fetchCustomers: () => dispatch(fetching("customers")),
+  changeStatus: () => dispatch(changeStatus("customers"))
 });
 
 export default connect(

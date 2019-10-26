@@ -25,10 +25,6 @@ const MediaCard = (props)=> {
   const classes = useStyles();
   const {data : vehicle}= props;
 
-  setInterval(() => {
-    // call Action to change db
-  }, 10000000);
-
   return (
     <Card className={classes.card}>
       <CardActionArea>

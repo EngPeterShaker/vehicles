@@ -5,50 +5,50 @@
       "id": 1,
       "name": "Toyota",
       "onlineStatus": true,
-      "color":"red",
-      "make":2015,
+      "color": "red",
+      "make": 2015,
       "model": "Prius",
-      "img_url":"https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
+      "img_url": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
     },
     {
       "vin": "e3dd45f5g5gt453",
       "id": 2,
       "name": "Tesla",
       "onlineStatus": true,
-      "color":"white",
-      "make":2016,
+      "color": "white",
+      "make": 2016,
       "model": "Tesla s4",
-      "img_url":"https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
+      "img_url": "https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
     },
     {
       "vin": "e3dd45f5g5gt453",
       "id": 3,
       "name": "Volvo",
       "onlineStatus": true,
-      "color":"green",
-      "make":2016,
+      "color": "green",
+      "make": 2016,
       "model": "e3",
-      "img_url":"https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
+      "img_url": "https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
     },
     {
       "vin": "e3dd45f5g5gt453",
       "id": 5,
       "name": "Citroen",
       "onlineStatus": true,
-      "color":"grey",
-      "make":2014,
+      "color": "grey",
+      "make": 2014,
       "model": "C5",
-      "img_url":"https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
+      "img_url": "https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
     },
     {
       "vin": "e3dd45f5g5gt453",
       "id": 6,
       "name": "Porshe",
       "onlineStatus": false,
-      "color":"blue",
-      "make":2015,
+      "color": "blue",
+      "make": 2015,
       "model": "P60",
-      "img_url":"https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2019/01/panamera-1024-e1547409913837.jpg"
+      "img_url": "https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2019/01/panamera-1024-e1547409913837.jpg"
     }
   ],
   "comments": [
@@ -58,92 +58,98 @@
       "postId": 1
     }
   ],
-  "customers":[
-    {"name": "Kalles Grustransporter AB",
-    "Address": "Cementvägen 8, 111 11 Södertälje",
-    "vehicles":[
-      {
-        "vin": "YS2R4X20005399401",
-        "reg_nr" :"ABC123",
-        "name": "Toyota",
-      "onlineStatus": true,
-      "color":"red",
-      "make":2015,
-      "model": "Prius",
-      "img_url":"https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
-      },
-      {
-        "vin": "VLUR4X20009093588",
-        "reg_nr" :"DEF456",
-        "name": "Tesla",
-        "onlineStatus": true,
-        "color":"white",
-        "make":2016,
-        "model": "Tesla s4",
-        "img_url":"https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
-      },
-      {
-        "vin": "VLUR4X20009048066",
-        "reg_nr" :"GHI789",
-        "name": "Volvo",
-      "onlineStatus": true,
-      "color":"green",
-      "make":2016,
-      "model": "e3",
-      "img_url":"https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
-      }
-    ]
+  "customers": [
+    {
+      "name": "Kalles Grustransporter AB",
+      "id": 1234,
+      "Address": "Cementvägen 8, 111 11 Södertälje",
+      "vehicles": [
+        {
+          "vin": "YS2R4X20005399401",
+          "reg_nr": "ABC123",
+          "name": "Toyota",
+          "onlineStatus": true,
+          "color": "red",
+          "make": 2015,
+          "model": "Prius",
+          "img_url": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/toyota-prius-rt-2016-049.jpg"
+        },
+        {
+          "vin": "VLUR4X20009093588",
+          "reg_nr": "DEF456",
+          "name": "Tesla",
+          "onlineStatus": true,
+          "color": "white",
+          "make": 2016,
+          "model": "Tesla s4",
+          "img_url": "https://icdn2.digitaltrends.com/image/digitaltrends/tesla-model-x-header.jpg"
+        },
+        {
+          "vin": "VLUR4X20009048066",
+          "reg_nr": "GHI789",
+          "name": "Volvo",
+          "onlineStatus": true,
+          "color": "green",
+          "make": 2016,
+          "model": "e3",
+          "img_url": "https://i.pinimg.com/originals/0b/6b/f0/0b6bf0a0343fbcce9a20e7c9126f9ea6.jpg"
+        }
+      ]
     },
-    {"name": "Johans Bulk AB",
+    {
+      "name": "Johans Bulk AB",
+      "id": 1277,
       "Address": "Balkvägen 12, 222 22 Stockholm",
-      "vehicles":[
+      "vehicles": [
         {
           "vin": "YS2R4X20005388011",
-          "reg_nr" :"JKL012",
+          "reg_nr": "JKL012",
           "name": "Citroen",
           "onlineStatus": true,
-          "color":"grey",
-          "make":2014,
+          "color": "grey",
+          "make": 2014,
           "model": "C5",
-          "img_url":"https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
+          "img_url": "https://cdn.images.autoexposure.co.uk/AETA20949/AETV57000032_1e.jpg"
         },
         {
           "vin": "YS2R4X20005387949",
-          "reg_nr" :"MNO345",
+          "reg_nr": "MNO345",
           "name": "Porshe",
           "onlineStatus": true,
-          "color":"blue",
-          "make":2015,
+          "color": "blue",
+          "make": 2015,
           "model": "P60",
-          "img_url":"https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2019/01/panamera-1024-e1547409913837.jpg"
+          "img_url": "https://di-uploads-pod3.dealerinspire.com/porscheoffremont/uploads/2019/01/panamera-1024-e1547409913837.jpg"
         }
       ]
-      },
-      {"name": "Haralds Värdetransporter AB",
-        "Address": "Budgetvägen 1, 333 33 Uppsala",
-        "vehicles":[
-          {
-            "vin": "VLUR4X20009048456",
-            "reg_nr" :"PQR678",
-            "name": "BMW",
+    },
+    {
+      "name": "Haralds Värdetransporter AB",
+      "id": 4444,
+      "Address": "Budgetvägen 1, 333 33 Uppsala",
+      "vehicles": [
+        {
+          "vin": "VLUR4X20009048456",
+          "reg_nr": "PQR678",
+          "name": "BMW",
           "onlineStatus": true,
-          "color":"blue",
-          "make":2015,
+          "color": "blue",
+          "make": 2015,
           "model": "P60",
-          "img_url":"https://car-images.bauersecure.com/pagefiles/84674/2019bmwi8-roadster-01.jpg"
-          },
-          {
-            "vin": "YS2R4X20005387055",
-            "reg_nr" :"STU901",
-            "name": "Alfa Romio",
+          "img_url": "https://car-images.bauersecure.com/pagefiles/84674/2019bmwi8-roadster-01.jpg"
+        },
+        {
+          "vin": "YS2R4X20005387055",
+          "reg_nr": "STU901",
+          "name": "Alfa Romio",
           "onlineStatus": false,
-          "color":"blue",
-          "make":2015,
+          "color": "blue",
+          "make": 2015,
           "model": "P60",
-          "img_url":"https://media.wired.com/photos/5d09594a62bcb0c9752779d9/master/pass/Transpo_G70_TA-518126.jpg"
-          }
-        ]
+          "img_url": "https://media.wired.com/photos/5d09594a62bcb0c9752779d9/master/pass/Transpo_G70_TA-518126.jpg"
         }
+      ]
+    }
   ],
   "profile": {
     "name": "typicode"
