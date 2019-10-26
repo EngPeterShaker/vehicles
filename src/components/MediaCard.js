@@ -25,6 +25,10 @@ const MediaCard = (props)=> {
   const classes = useStyles();
   const {data : vehicle}= props;
 
+  setInterval(() => {
+    // call Action to change db
+  }, 10000000);
+
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -40,7 +44,13 @@ const MediaCard = (props)=> {
           </Typography>
           <Typography>
           <Translate id="status" />
-         { vehicle.status}
+          {':'}
+         { vehicle.onlineStatus? 'online' : 'offline'}
+          </Typography>
+          <Typography>
+          <Translate id="owner" />
+          {':'}
+         { vehicle.owner}
           </Typography>
           {/* <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging

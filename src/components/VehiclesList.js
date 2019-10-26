@@ -1,4 +1,4 @@
-import React, { useEffect, useState, forwardRef } from "react";
+import React, { useEffect, useState, forwardRef, useRef } from "react";
 import { connect } from "react-redux";
 import { withLocalize, Translate } from "react-localize-redux";
 import en from "../translations/en.translations.json";
@@ -23,6 +23,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,7 +46,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       // maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      maxHeight: '90%',
+      maxHeight: "90%",
       width: 250
     }
   }
@@ -63,12 +64,18 @@ const VehiclesList = props => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [filterStatus, setFilterStatus] = useState(false);
   const [vehiclesList, setVehiclesList] = useState(null);
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange = event => {
-    setPersonName(event.target.value);
-  };
+  const [personName, setPersonName] = useState([]);
+  const inputLabel = useRef(null);
+  const [labelWidth, setLabelWidth] = useState(50);
+  // useEffect(() => {
+  //   setLabelWidth(inputLabel.current.offsetWidth);
+  // }, []);
+  const [values, setValues] = useState({
+    status: "",
+    name: "hai"
+  });
 
   const {
     vehiclesReducer = {},
@@ -95,7 +102,7 @@ const VehiclesList = props => {
     addTranslationForLanguage(en, "en");
     addTranslationForLanguage(fr, "fr");
   }, []);
-  /////////////////////////////////////
+  /////////////// empty dependency array to be called once //////////////////////
   useEffect(() => {
     if (list && list.length > 0) {
       setVehiclesList(list);
@@ -108,9 +115,23 @@ const VehiclesList = props => {
 
   const applyFilterMenu = () => {
     // const list1 = vehiclesList;
-    const filteredList = vehiclesList.filter(i => personName.indexOf(i.owner) > -1 );
-    setVehiclesList(filteredList)
+    const filteredList = vehiclesList.filter(
+      i => personName.indexOf(i.owner) > -1
+    );
+    setVehiclesList(filteredList);
   };
+
+  const handleChange = event => {
+    setPersonName(event.target.value);
+  };
+
+  const handleStatus = event => {
+    const filteredList = vehiclesList.filter(
+      i => i.onlineStatus == event.target.value
+    );
+    setVehiclesList(filteredList);
+  };
+
   console.log("vehiclesList", vehiclesList);
   return (
     <>
@@ -119,7 +140,7 @@ const VehiclesList = props => {
         color="primary"
         onClick={() => toggleFilterMenu()}
       >
-        Slide in alert dialog
+        Filter Vehicles
       </Button>
       <Grid container className={classes.root}>
         {/* <Translate id="greeting" /> */}
@@ -176,6 +197,27 @@ const VehiclesList = props => {
                       {customer.name}
                     </MenuItem>
                   ))}
+              </Select>
+            </FormControl>
+
+            <FormControl variant="outlined" className={classes.formControl}>
+              <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
+                Status
+              </InputLabel>
+              <Select
+                value={values.status}
+                onChange={handleStatus}
+                labelWidth={labelWidth}
+                inputProps={{
+                  name: "age",
+                  id: "outlined-age-simple"
+                }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={true}>Online</MenuItem>
+                <MenuItem value={false}>Offline</MenuItem>
               </Select>
             </FormControl>
           </DialogContent>
