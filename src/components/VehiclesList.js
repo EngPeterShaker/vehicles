@@ -24,6 +24,7 @@ import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
 import FormHelperText from "@material-ui/core/FormHelperText";
+import _ from 'lodash';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,7 +65,7 @@ const VehiclesList = props => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [filterStatus, setFilterStatus] = useState(false);
+  const [filterStatus, setFilterStatus] = useState(null);
   const [vehiclesList, setVehiclesList] = useState(null);
   const [personName, setPersonName] = useState([]);
   const inputLabel = useRef(null);
@@ -113,12 +114,12 @@ const VehiclesList = props => {
     setOpen(!open);
   };
 
-  const applyFilterMenu = () => {
-    // const list1 = vehiclesList;
-    const filteredList = vehiclesList.filter(
-      i => personName.indexOf(i.owner) > -1
-    );
-    setVehiclesList(filteredList);
+  const applyFilterMenu = async() => {
+    const listFilteredByOwner = personName.length >0  ? list.filter(i => personName.indexOf(i.owner) > -1) :   list
+    const listFilteredByStatus =  filterStatus !=='null' ? list.filter(i =>  i.onlineStatus === filterStatus):  list;
+    const result = await _.intersection(listFilteredByOwner, listFilteredByStatus);
+    setVehiclesList(result);
+    toggleFilterMenu();
   };
 
   const handleChange = event => {
@@ -126,13 +127,10 @@ const VehiclesList = props => {
   };
 
   const handleStatus = event => {
-    const filteredList = vehiclesList.filter(
-      i => i.onlineStatus == event.target.value
-    );
-    setVehiclesList(filteredList);
+    const val = event.target.value;
+    setFilterStatus(val);
   };
 
-  console.log("vehiclesList", vehiclesList);
   return (
     <>
       <Button
@@ -205,15 +203,16 @@ const VehiclesList = props => {
                 Status
               </InputLabel>
               <Select
-                value={values.status}
+                value={filterStatus}
                 onChange={handleStatus}
+                // onChange={()=> setFilterStatus(event.target.value)}
                 labelWidth={labelWidth}
                 inputProps={{
                   name: "age",
                   id: "outlined-age-simple"
                 }}
               >
-                <MenuItem value="">
+                <MenuItem value="null">
                   <em>None</em>
                 </MenuItem>
                 <MenuItem value={true}>Online</MenuItem>
