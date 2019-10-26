@@ -17,7 +17,15 @@ const fetch_customers = (data, secretSauce)=> {
     type: 'FETCH_CUSTOMERS',
     payload: {
       customers : data,
-      // vehiclesList : data.map(item)
+      vehiclesList : data.reduce(
+        (acc, item) => {
+          let list = item.vehicles.map(i => {
+            i.owner = item.name
+            return i;
+          })
+          return [...acc, ...list ]},
+        []
+      )
     }
   };
 }

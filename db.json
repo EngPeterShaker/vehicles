@@ -125,7 +125,7 @@
           {
             "vin": "VLUR4X20009048456",
             "reg_nr" :"PQR678",
-            "name": "Porshe",
+            "name": "BMW",
           "status": "online",
           "color":"blue",
           "make":2015,
@@ -135,7 +135,7 @@
           {
             "vin": "YS2R4X20005387055",
             "reg_nr" :"STU901",
-            "name": "Porshe",
+            "name": "Alfa Romio",
           "status": "online",
           "color":"blue",
           "make":2015,
