@@ -10,15 +10,16 @@ import NavBar from "./components/NavBar";
 import Button from "@material-ui/core/Button";
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import Fullscreen from 'react-full-screen';
+import configureStore from "./store";
 
 function App(props) {
 
   const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
 
 
-  const simpleAction = event => {
-    props.simpleAction();
-  };
+  // const simpleAction = event => {
+  //   props.simpleAction();
+  // };
 
   // props.initialize({
   //   languages: [
@@ -36,9 +37,9 @@ function App(props) {
 // }
 
   return (
-    <div className="App">
+    <div className="App" data-test="AppComponent">
 
-      <LocalizeProvider>
+      <LocalizeProvider >
       <NavBar />
       <Fullscreen
           enabled={isFullscreenEnabled}
@@ -55,20 +56,15 @@ function App(props) {
         Go FullScreen
       </Button>
         </LocalizeProvider>
-      {/* <button onClick={() => simpleAction()}>Test redux action</button> */}
-      {/* <pre>{JSON.stringify(props)}</pre> */}
     </div>
   );
 }
-const mapStateToProps = state => ({
-  ...state
-});
-const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
-});
+// const mapStateToProps = state => ({
+//   ...state
+// });
+// const mapDispatchToProps = dispatch => ({
+//   simpleAction: () => dispatch(simpleAction())
+// });
 // export default withLocalize(App);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withLocalize(App));
+export default withLocalize(App);
