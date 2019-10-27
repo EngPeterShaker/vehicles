@@ -10,6 +10,8 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import MenuIcon from '@material-ui/icons/Menu';
+// import Button from "@material-ui/core/Button";
 // import AccountCircle from '@material-ui/core/AccountCircle';
 // import en from "../translations/en.translations.json";
 // import fr from "../translations/fr.translations.json";
@@ -103,7 +105,7 @@ const NavBar = props => {
     languages,
     activeLanguage,
     addTranslationForLanguage,
-    setActiveLanguage
+    setActiveLanguage,
   } = props;
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -238,7 +240,9 @@ const NavBar = props => {
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
-            ></IconButton>
+            >
+              <LanguageIcon />
+            </IconButton>
           </div>
         </Toolbar>
       </AppBar>

@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import { connect } from "react-redux";
 import { LocalizeProvider  , withLocalize} from "react-localize-redux";
 // import translations from "./translations";
@@ -7,8 +7,14 @@ import "./App.css";
 import { simpleAction } from "./actions/simpleAction";
 import VehiclesList from "./components/VehiclesList";
 import NavBar from "./components/NavBar";
+import Button from "@material-ui/core/Button";
+import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import Fullscreen from 'react-full-screen';
 
 function App(props) {
+
+  const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
+
 
   const simpleAction = event => {
     props.simpleAction();
@@ -34,7 +40,20 @@ function App(props) {
 
       <LocalizeProvider>
       <NavBar />
+      <Fullscreen
+          enabled={isFullscreenEnabled}
+          onChange={isFullscreenEnabled => setIsFullscreenEnabled(isFullscreenEnabled)}
+          style={{'overflow': 'overlay'}}
+        >
       <VehiclesList />
+      </Fullscreen>
+      <Button
+      variant="outlined"
+      color="secondary"
+      onClick={() => setIsFullscreenEnabled(true)}>
+        <FullscreenIcon />
+        Go FullScreen
+      </Button>
         </LocalizeProvider>
       {/* <button onClick={() => simpleAction()}>Test redux action</button> */}
       {/* <pre>{JSON.stringify(props)}</pre> */}

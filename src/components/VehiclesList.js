@@ -140,7 +140,7 @@ const VehiclesList = props => {
         setVehiclesList(newList)
       // }
     }
-  }, 20*1000);
+  }, 200*1000);
 
 
   const applyFilterMenu = async() => {
