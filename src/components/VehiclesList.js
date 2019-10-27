@@ -25,6 +25,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import _ from 'lodash';
+import useInterval from "../HOOKS/useInterval";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -115,32 +116,14 @@ const VehiclesList = props => {
 
   const getRndInteger = (max , min =0)=> Math.floor(Math.random() * (max - min + 1) ) + min;
 
-  setInterval(() => {
-    // call Action to change db
-    const customersLength = customers? customers.length :0;
-    const vehiclesLength = list? list.length :0;
-    // getRandomCustomer()
-    if(customers && list){
 
-      // const rndCust = getRndInteger(customers.length)
-      // const CustomerVehiclesLength =  customers[rndCust]? customers[rndCust]['vehicles'].length:null;
-      // const rndvehicle = CustomerVehiclesLength ? getRndInteger(CustomerVehiclesLength) : null;
-      // if (!rndvehicle){
-        // const randomVehicle = customers[rndCust]['vehicles'][rndvehicle];
-        // const changedCustomer = customers[rndCust]['vehicles'][rndvehicle]
-        // props.changeStatus(rndCust , rndvehicle ,changedVehicle )
-        // return ;
-      // }else {
-        // const randomVehicle = list[randomIndex]
-        // const changedVehicle  = {...randomVehicle , onlineStatus: !randomVehicle.onlineStatus}
+  useInterval(() => {
         const randomIndex = getRndInteger(list.length-1)
         const newList = list ;
         newList[randomIndex] = {...list[randomIndex], onlineStatus: !list[randomIndex]['onlineStatus']};
-        setVehiclesList([])
         setVehiclesList(newList)
-      // }
-    }
-  }, 200*1000);
+  }, 20 *1000);
+
 
 
   const applyFilterMenu = async() => {
