@@ -2,7 +2,9 @@
   "greeting":"Bonjour",
   "farewell": "Au revoir",
   "english": "English",
-  "owner":"Ownuuu",
+  "owner":"propriétaire",
   "french": "French",
-  "status": "statuuuuu"
+  "status": "Le statute",
+  "online": "En ligne",
+  "offline":"Hors ligne"
 }

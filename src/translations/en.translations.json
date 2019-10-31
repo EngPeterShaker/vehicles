@@ -4,5 +4,7 @@
   "french": "French",
   "english": "English",
   "owner":"Owner",
-  "status": "statuzzzz"
+  "status": "Status",
+  "online": "Online",
+  "offline":"Offline"
 }
