@@ -8,19 +8,25 @@
 
 div[class*="makeStyles-card-"]{
 // color : red
+[title*="img"]{
+  transition: transform 1s; /* Animation */
+}
+
 .shown--hover{
   display: none;
 }
-transition: transform 2s; /* Animation */
 
       &:hover{
+  background-color: white;
   opacity: 0.8;
   transition: 0.5s;
   z-index: 3;
 
   [title*="img"]{
     height: 6.3em;
-    transform: scale(1.5);
+    width: 86%;
+    margin: 0 auto;
+    transform: scale(1.3);
     // height: 8/0%;
 
   }

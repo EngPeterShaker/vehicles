@@ -43,7 +43,11 @@ const MediaCard = (props)=> {
           </Typography>
           <Typography>
           <Translate id="status" />
-         {`: ${ vehicle.onlineStatus? 'online' : 'offline'}`}
+          {':'}
+          {vehicle.onlineStatus ?
+          <Translate id="online" /> :
+         <Translate id="offline" />}
+         {/* {`: ${ vehicle.onlineStatus? 'online' : 'offline'}`} */}
             <span className={`span__status ${vehicle.onlineStatus ?'online' :''}`}></span>
           </Typography>
 

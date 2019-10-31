@@ -41,6 +41,11 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     width: "100%"
   },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '5em'
+  },
   control: {
     padding: theme.spacing(2)
   },
@@ -151,14 +156,20 @@ const VehiclesList = props => {
         newList[randomIndex] = {...list[randomIndex], onlineStatus: !list[randomIndex]['onlineStatus']};
         setVehiclesList(newList)
         toggleToast(newList[randomIndex])
-  }, 10 *1000);
+  }, 60 *1000);
 
 
 
   const applyFilterMenu = async() => {
     const listFilteredByOwner = personName.length >0  ? list.filter(i => personName.indexOf(i.owner) > -1) :   list
-    const listFilteredByStatus =  filterStatus !=='null' ? list.filter(i =>  i.onlineStatus === filterStatus):  list;
-    const result = await _.intersection(listFilteredByOwner, listFilteredByStatus);
+    const listFilteredByStatus =  filterStatus == 'null' || !filterStatus ?  list:  list.filter(i =>  i.onlineStatus === filterStatus);
+    console.log('filterStatus', filterStatus)
+    console.log('filterStatus', personName  )
+    console.log('listFilteredByStatus' , listFilteredByStatus)
+    console.log('listFilteredByOwner', listFilteredByOwner)
+    const result =  _.intersection(listFilteredByOwner, listFilteredByStatus);
+    console.log(' _.intersection(listFilteredByOwner, listFilteredByStatus);' ,  _.intersection(listFilteredByOwner, listFilteredByStatus))
+    console.log('result', result)
     setVehiclesList(result);
     toggleFilterMenu();
   };
@@ -173,7 +184,8 @@ const VehiclesList = props => {
   };
 
   const removeAllFilters = e => {
-    console.log(e)
+    setVehiclesList(list);
+    // console.log(e)
   }
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -241,6 +253,7 @@ const VehiclesList = props => {
               <Select
                 multiple
                 value={personName}
+                style={{width: '80%'}}
                 onChange={handleChange}
                 placeholder={"None"}
                 input={<Input id="select-multiple-chip" />}
@@ -301,7 +314,6 @@ const VehiclesList = props => {
             );
           })}
       </Grid>
-      <Button onClick={toggleToast}>Top-Left</Button>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         key={`${vertical},${horizontal}`}
