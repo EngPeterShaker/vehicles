@@ -9,12 +9,15 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import '../styles/VehiclesList.scss'
 const useStyles = makeStyles({
   card: {
     maxWidth: '99%',
     padding: '1em 1em',
-    margin : '1em 2em'
+    margin : '1em 2em',
+    "&:hover": {
+      // backgroundColor: "#fcf"
+    },
   },
   media: {
     height: 140,
@@ -32,7 +35,7 @@ const MediaCard = (props)=> {
           className={classes.media}
           image={vehicle.img_url}
           // image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          title="img"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -40,14 +43,16 @@ const MediaCard = (props)=> {
           </Typography>
           <Typography>
           <Translate id="status" />
-          {':'}
-         { vehicle.onlineStatus? 'online' : 'offline'}
+         {`: ${ vehicle.onlineStatus? 'online' : 'offline'}`}
+            <span className={`span__status ${vehicle.onlineStatus ?'online' :''}`}></span>
           </Typography>
+
+          <div className="shown--hover">
           <Typography>
           <Translate id="owner" />
-          {':'}
-         { vehicle.owner}
+         {`: ${vehicle.owner}`}
           </Typography>
+          </div>
           {/* <Typography variant="body2" color="textSecondary" component="p">
             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
             across all continents except Antarctica
@@ -55,12 +60,14 @@ const MediaCard = (props)=> {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
+        <Button
+         className="shown--hover"
+        size="small" color="primary">
+          Show Details
         </Button>
-        <Button size="small" color="primary">
+        {/* <Button size="small" color="primary">
           Learn More
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );

@@ -15,26 +15,15 @@ import configureStore from "./store";
 function App(props) {
 
   const [isFullscreenEnabled, setIsFullscreenEnabled] = useState(false)
+const fullscreenBtn ={
+  bottom: '3em',
+  float: 'right',
+ right: '3em',
+ backgroundColor: 'white',
+ position: 'fixed',
+ height: '3em',
+}
 
-
-  // const simpleAction = event => {
-  //   props.simpleAction();
-  // };
-
-  // props.initialize({
-  //   languages: [
-  //     { name: "English", code: "en" },
-  //     { name: "French", code: "fr" }
-  //   ],
-  //   // translation: globalTranslations,
-  //   translation: translations,
-  //       options: {
-  //         renderToStaticMarkup : false,
-  //         renderInnerHtml: true,
-  //         defaultLanguage: "en"
-  //       }
-  // });
-// }
 
   return (
     <div className="App" data-test="AppComponent">
@@ -51,6 +40,9 @@ function App(props) {
       <Button
       variant="outlined"
       color="secondary"
+      // classes={{fullscreen-btn}}
+      // className="fullscreen-btn"
+      style={fullscreenBtn}
       onClick={() => setIsFullscreenEnabled(true)}>
         <FullscreenIcon />
         Go FullScreen
@@ -59,12 +51,6 @@ function App(props) {
     </div>
   );
 }
-// const mapStateToProps = state => ({
-//   ...state
-// });
-// const mapDispatchToProps = dispatch => ({
-//   simpleAction: () => dispatch(simpleAction())
-// });
-// export default withLocalize(App);
+
 
 export default withLocalize(App);

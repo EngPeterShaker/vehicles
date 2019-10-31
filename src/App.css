@@ -24,3 +24,11 @@
 .fullscreen{
   overflow: overlay !important;
 }
+ .fullscreen-btn{
+   bottom: 3em;
+   float: right;
+  right: 3em;
+  background-color: white;
+  position: fixed;
+  height: 3em;
+}
