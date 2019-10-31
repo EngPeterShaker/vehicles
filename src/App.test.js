@@ -8,6 +8,7 @@ const setUp = (props={}) => {
   const component = shallow(<App {...props} />);
   return component;
 };
+
 describe('App Component', () => {
   let component;
     beforeEach(() => {
