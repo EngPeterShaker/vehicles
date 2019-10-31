@@ -19,6 +19,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -26,6 +27,11 @@ import Chip from "@material-ui/core/Chip";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import _ from 'lodash';
 import useInterval from "../HOOKS/useInterval";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import '../styles/VehiclesList.scss';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import Snackbar from '@material-ui/core/Snackbar';
+import WarningIcon from '@material-ui/icons/Warning';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,7 +43,19 @@ const useStyles = makeStyles(theme => ({
   },
   control: {
     padding: theme.spacing(2)
-  }
+  },
+  formControl1:{
+      margin: theme.spacing(1),
+      minWidth: 120,
+      width:'4em',
+    display:'block'
+  },
+  formControl2:{
+    margin: theme.spacing(1),
+    minWidth: 120,
+    width:'100%',
+  display:'block'
+}
 }));
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -74,10 +92,17 @@ const VehiclesList = props => {
   // useEffect(() => {
   //   setLabelWidth(inputLabel.current.offsetWidth);
   // }, []);
-  const [values, setValues] = useState({
-    status: "",
-    name: "hai"
+  // const [values, setValues] = useState({
+  //   status: "",
+  //   name: "hai"
+  // });
+  const [toastState, setToastState] = useState({
+    isToastOpen: false,
+    vertical: 'bottom',
+    horizontal: 'left',
+    changedVehicle:{}
   });
+  const { vertical, horizontal, isToastOpen , changedVehicle} = toastState;
 
   const {
     vehiclesReducer = {},
@@ -96,6 +121,9 @@ const VehiclesList = props => {
   const getCustomers = () => {
     // props.fetchVehicles();
     props.fetchCustomers();
+  };
+  const toggleToast = (changedVehicle) => {
+    setToastState({ ...toastState, isToastOpen: !isToastOpen  , changedVehicle});
   };
 
   useEffect(() => {
@@ -122,7 +150,8 @@ const VehiclesList = props => {
         const newList = list ;
         newList[randomIndex] = {...list[randomIndex], onlineStatus: !list[randomIndex]['onlineStatus']};
         setVehiclesList(newList)
-  }, 20 *1000);
+        toggleToast(newList[randomIndex])
+  }, 10 *1000);
 
 
 
@@ -143,6 +172,11 @@ const VehiclesList = props => {
     setFilterStatus(val);
   };
 
+  const removeAllFilters = e => {
+    console.log(e)
+  }
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <Button
@@ -151,10 +185,13 @@ const VehiclesList = props => {
         onClick={() => toggleFilterMenu()}
       >
         Filter Vehicles
+        <FilterListIcon />
       </Button>
       <Grid container className={classes.root}>
         {/* <Translate id="greeting" /> */}
         <Dialog
+        className="filters__dialog--design"
+        fullScreen={fullScreen}
           open={open}
           TransitionComponent={Transition}
           keepMounted
@@ -166,12 +203,38 @@ const VehiclesList = props => {
             {"Filter Vehicles"}
           </DialogTitle>
           <DialogContent>
+      <Grid>
+
             {/* <DialogContentText id="alert-dialog-slide-description">
             Let Google help apps determine location. This means sending anonymous location data to
             Google, even when no apps are running.
           </DialogContentText> */}
 
-            <FormControl className={classes.formControl}>
+                <FormControl variant="outlined"
+                className={classes.formControl1}>
+  {/* <FormControlLabel label="Small" /> */}
+                  <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
+                    Status
+                  </InputLabel>
+                  <Select
+                style={{width: '100%'}}
+                    value={filterStatus}
+                    onChange={handleStatus}
+                    // onChange={()=> setFilterStatus(event.target.value)}
+                    labelWidth={labelWidth}
+                    inputProps={{
+                      name: "age",
+                      id: "outlined-age-simple"
+                    }}
+                  >
+                    <MenuItem value="null">
+                      <em>All</em>
+                    </MenuItem>
+                    <MenuItem value={true}>Online</MenuItem>
+                    <MenuItem value={false}>Offline</MenuItem>
+                  </Select>
+                </FormControl>
+            <FormControl className={classes.formControl2}>
               <InputLabel htmlFor="select-multiple-chip">
                 Select Owner:
               </InputLabel>
@@ -179,7 +242,7 @@ const VehiclesList = props => {
                 multiple
                 value={personName}
                 onChange={handleChange}
-                placeholder={"hello"}
+                placeholder={"None"}
                 input={<Input id="select-multiple-chip" />}
                 renderValue={selected => (
                   <div className={classes.chips}>
@@ -195,7 +258,7 @@ const VehiclesList = props => {
                 MenuProps={MenuProps}
               >
                 <MenuItem disabled value="">
-                  <em>Placeholder</em>
+                  <em> {`List of owners`}</em>
                 </MenuItem>
                 {customers &&
                   customers.map(customer => (
@@ -210,28 +273,15 @@ const VehiclesList = props => {
               </Select>
             </FormControl>
 
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
-                Status
-              </InputLabel>
-              <Select
-                value={filterStatus}
-                onChange={handleStatus}
-                // onChange={()=> setFilterStatus(event.target.value)}
-                labelWidth={labelWidth}
-                inputProps={{
-                  name: "age",
-                  id: "outlined-age-simple"
-                }}
-              >
-                <MenuItem value="null">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={true}>Online</MenuItem>
-                <MenuItem value={false}>Offline</MenuItem>
-              </Select>
-            </FormControl>
-          </DialogContent>
+            <Button variant="contained" color="secondary"
+            onClick={() => removeAllFilters()}
+             className={classes.button}>
+        {`Remove Filters`}
+      </Button>
+      </Grid>
+
+            </DialogContent>
+
           <DialogActions>
             <Button onClick={toggleFilterMenu} color="primary">
               Cancel
@@ -251,6 +301,19 @@ const VehiclesList = props => {
             );
           })}
       </Grid>
+      <Button onClick={toggleToast}>Top-Left</Button>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        key={`${vertical},${horizontal}`}
+        open={isToastOpen}
+        onClose={toggleToast}
+        ContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        message={<span id="message-id">
+        {/* <WarningIcon /> */}
+         {`${changedVehicle.name} is now ${changedVehicle.onlineStatus ? 'online' : 'offline'}`} </span>}
+      />
     </>
   );
 };

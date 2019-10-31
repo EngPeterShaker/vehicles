@@ -1,0 +1,47 @@
+.filters__dialog--design{
+  .MuiDialog-paper{
+    width: 60%;
+    height: 30em;
+  }
+}
+
+
+div[class*="makeStyles-card-"]{
+// color : red
+.shown--hover{
+  display: none;
+}
+transition: transform 2s; /* Animation */
+
+      &:hover{
+  opacity: 0.8;
+  transition: 0.5s;
+  z-index: 3;
+
+  [title*="img"]{
+    height: 6.3em;
+    transform: scale(1.5);
+    // height: 8/0%;
+
+  }
+  .shown--hover{
+    display: block;
+  }
+  .MuiCardContent-root{
+    // height: 120%;
+  }
+}
+}
+
+.span__status{
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  border: 1px solid transparent;
+  margin: 0px 7px;
+  border-radius: 10px;
+  background-color: grey;
+  &.online{
+    background-color: green;
+  }
+}
