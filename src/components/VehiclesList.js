@@ -32,6 +32,7 @@ import '../styles/VehiclesList.scss';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Snackbar from '@material-ui/core/Snackbar';
 import WarningIcon from '@material-ui/icons/Warning';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -199,7 +200,7 @@ const VehiclesList = props => {
         Filter Vehicles
         <FilterListIcon />
       </Button>
-      <Grid container className={classes.root}>
+      <Grid container className={classes.root} data-test="VehiclesList">
         {/* <Translate id="greeting" /> */}
         <Dialog
         className="filters__dialog--design"
@@ -330,6 +331,10 @@ const VehiclesList = props => {
   );
 };
 
+VehiclesList.propTypes ={
+  vehiclesReducer : PropTypes.object,
+  addTranslationForLanguage :PropTypes.func,
+}
 const mapStateToProps = state => ({
   ...state
 });

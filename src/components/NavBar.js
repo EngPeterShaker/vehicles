@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import { withLocalize, Translate } from "react-localize-redux";
@@ -10,13 +11,8 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from '@material-ui/icons/Menu';
-// import Button from "@material-ui/core/Button";
-// import AccountCircle from '@material-ui/core/AccountCircle';
-// import en from "../translations/en.translations.json";
-// import fr from "../translations/fr.translations.json";
-import translations from "../translations";
 
+import translations from "../translations";
 import LanguageIcon from "@material-ui/icons/Language";
 
 const useStyles = makeStyles(theme => ({
@@ -251,6 +247,11 @@ const NavBar = props => {
     </div>
   );
 };
+
+NavBar.propTypes ={
+  setActiveLanguage :PropTypes.func,
+}
+
 const mapStateToProps = state => ({
   ...state
 });
