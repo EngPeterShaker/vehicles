@@ -24,8 +24,8 @@ You will also see any lint errors in the console.
 6. app is localized with two different language ( English & French ) . 
 7. User can filter vehicles by Online Status .
 8. User can filter vehicles by selecting owner's name from a list  .
-9 . Responsiveness is taken into consideration.
-10 . A snack-bar is added to notify user whenever the vehicle that has a changed status .
-11 . node-sass library was added to support SASS. 
-12 . Type checked with react prop-types.
+9. Responsiveness is taken into consideration.
+10. A snack-bar is added to notify user whenever the vehicle that has a changed status .
+11. node-sass library was added to support SASS. 
+12. Type checked with react prop-types.
 13. Full Screen support.
